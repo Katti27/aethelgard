@@ -1,7 +1,5 @@
 
-## **[[1.1 — AGE OF CREATION|1.1 — Age of Creation]]** 
-
-### _(Timeless Mythic Prehistory)_
+## **[[1.1 — AGE OF CREATION|1.1 — Age of Creation]]** _(Timeless Mythic Prehistory)_
 
 **[[1.1.1 — The Formless Aeon]]**  
 
@@ -15,9 +13,7 @@
 
 ---
 
-# **[[1.2 — THE FIRST PEOPLES]]**
-
-### _(c. –8200 to –6100 BC)_
+## **[[1.2 — THE FIRST PEOPLES]]** _(c. –8200 to –6100 BC)_
 
 **[[1.2.1 — Awakening of the Elves]] (c. –8170)**  
 
@@ -31,9 +27,7 @@
 
 ---
 
-# **[[1.3 — THE AGE OF FORMATION]]**
-
-### _(c. –6100 to –4250 BC)_
+## **[[1.3 — THE AGE OF FORMATION]]** _(c. –6100 to –4250 BC)_
 
 **[[1.3.1 — Verdant Circles Coalesce]] (c. –5890)**  
 
@@ -49,9 +43,7 @@
 
 ---
 
-# **[[1.4 — DAWN OF YOUNGER PEOPLES]]**
-
-### _(c. –4250 to –3620 BC)_
+## **[[1.4 — DAWN OF YOUNGER PEOPLES]]** _(c. –4250 to –3620 BC)_
 
 **[[1.4.1 — Founding of Khunzar]] (c. –4125)**  
 
@@ -67,9 +59,7 @@
 
 ---
 
-# **1.5 — SCHISMS OF THE FIRST RACES**
-
-### _(c. –3620 to –3020 BC)_
+## **1.5 — SCHISMS OF THE FIRST RACES** _(c. –3620 to –3020 BC)_
 
 **1.5.1 — Drow Schism Begins (c. –3595)**  
 A bitter arcane and religious conflict fractures elven society; exiled elves flee into the deep caverns.
@@ -88,9 +78,7 @@ Drow, duergar, and illithids carve and claim a growing network of deep passages 
 
 ---
 
-# **1.6 — ARCANE EXPANSION & EARLY HUMAN ORDER**
-
-### _(c. –3020 to –1710 BC)_
+## **1.6 — ARCANE EXPANSION & EARLY HUMAN ORDER** _(c. –3020 to –1710 BC)_
 
 **1.6.1 — Verdant Court of Eluthariel (c. –2975)**  
 Western elven circles and high houses formalize the **Verdant Court** to mediate disputes and guide forest realms.
