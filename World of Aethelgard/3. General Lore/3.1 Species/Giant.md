@@ -1,0 +1,67 @@
+---
+aliases:
+  - Giants
+  - Giant's
+  - giants
+  - giant
+  - giant's
+  - Titan
+  - Titans
+  - Titan's
+  - titan
+  - titan's
+  - titans
+  - Storm giant
+  - Cloud giant
+  - Fog giant
+  - Fire giant
+  - Frost giant
+  - Stone giant
+  - Mountain giant
+  - Hill giant
+  - Ettin
+  - Storm giant's
+  - Cloud giant's
+  - Fog giant's
+  - Fire giant's
+  - Frost giant's
+  - Stone giant's
+  - Mountain giant's
+  - Hill giant's
+  - Ettin's
+  - Storm giants
+  - Cloud giants
+  - Fog giants
+  - Fire giants
+  - Frost giants
+  - Stone giants
+  - Mountain giants
+  - Hill giants
+  - Ettins
+  - storm giant
+  - cloud giant
+  - fog giant
+  - fire giant
+  - frost giant
+  - stone giant
+  - mountain giant
+  - hill giant
+  - storm giant's
+  - cloud giant's
+  - fog giant's
+  - fire giant's
+  - frost giant's
+  - stone giant's
+  - mountain giant's
+  - hill giant's
+  - storm giants
+  - cloud giants
+  - fog giants
+  - fire giants
+  - frost giants
+  - stone giants
+  - mountain giants
+  - hill giants
+  - Giantkind
+  - giantkind
+---
