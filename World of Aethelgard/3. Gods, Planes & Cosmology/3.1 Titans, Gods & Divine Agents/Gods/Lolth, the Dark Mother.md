@@ -1,0 +1,11 @@
+---
+aliases:
+  - Lolth
+  - Lolth's
+  - Lolths
+  - Dark Mother
+  - Spider Queen
+  - Araushnee
+  - Araushnee 's
+  - Araushnee, the Weaver
+---
