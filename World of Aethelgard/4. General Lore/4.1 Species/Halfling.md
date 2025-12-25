@@ -1,0 +1,5 @@
+---
+aliases:
+  - Halfling's
+  - Halflings
+---

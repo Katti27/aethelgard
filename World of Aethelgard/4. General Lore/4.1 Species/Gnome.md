@@ -1,0 +1,5 @@
+---
+aliases:
+  - Gnome's
+  - Gnomes
+---
