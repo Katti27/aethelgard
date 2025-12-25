@@ -1,177 +1,225 @@
 /* ============================================================
-   Flowershow Cloud — ITS Theme (Dark-only)
-   - Designed to mimic Obsidian ITS dark palette & typography
-   - Works with Flowershow's markdown wrapper (.prose) and common
-     layout containers (navbar/sidebar) using broad selectors.
-
-   Usage:
-   1) Put this file at your repo root as: custom.css
-   2) Put config.json at your repo root (or publish root)
-   3) In config.json, set theme.defaultMode="dark" and hide switch
+   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY)
+   + Custom Fonts (Google Fonts) for closer ITS match
+   ------------------------------------------------------------
+   ITS theme fonts (from your uploaded ITS css):
+   - Body/UI: Inter
+   - Mono: Fira Code
+   - Headings: serif stack ending with "Suez One"
+   This file loads Inter + Fira Code + Suez One via Google Fonts,
+   then applies them to Flowershow's typical typography output.
    ============================================================ */
 
 /* -----------------------------
-   1) ITS Dark Tokens (from your Obsidian ITS theme)
+   0) Load fonts (must be first)
+------------------------------ */
+/* Per Flowershow docs/blog guidance, you can import Google Fonts in custom.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Suez+One&display=swap");
+
+/* -----------------------------
+   1) ITS palette tokens (dark)
 ------------------------------ */
 :root,
-html[data-theme="dark"],
-[data-theme="dark"],
-html[data-theme="light"],
-[data-theme="light"] {
-  /* Force dark presentation even if something sets data-theme="light" */
+html,
+html[data-theme],
+body {
   color-scheme: dark;
 
-  /* Core palette */
-  --its-outer-bar: #0b0f13;          /* top bar / outer chrome */
-  --its-bg: #252c36;                 /* app background */
-  --its-note: #1a1e24;               /* note/page surface */
-  --its-aside-bg: #11151d;           /* callout/aside surface */
+  --its-outer-bar: #0b0f13;
+  --its-bg: #252c36;
+  --its-note: #1a1e24;
+  --its-panel: #11151d;
+
   --its-text: #cfd7dd;
-  --its-soft-text: #97a1b9;
-  --its-faint-text: #4e5b6f;
+  --its-muted: #97a1b9;
+  --its-faint: #4e5b6f;
 
-  /* Accents */
-  --its-headers: #c14343;            /* headings */
-  --its-accent: #863737;             /* primary accent */
-  --its-accent-dark: #652121;        /* button/active */
-  --its-accent-deep: #3f1010;        /* deepest */
-  --its-link: #61afef;               /* links */
-  --its-highlight: #7a141466;        /* selection / highlight */
+  --its-h1: #c14343;      /* red title */
+  --its-link: #61afef;    /* bright blue */
+  --its-em: #e79c5d;      /* warm orange for italic parts */
+  --its-accent: #863737;  /* deep red accent */
+  --its-rule: #2f3b4d;    /* separators/borders */
 
-  /* UI */
-  --its-hr: #2f3b4d;
-  --its-outline: var(--its-outer-bar);
-  --its-table: #283345;
-  --its-td: #06080c60;
-  --its-th: var(--its-accent-dark);
-
-  /* Code */
   --its-code-bg: #232831;
-  --its-code-text: #fa4545;
+  --its-code-inline: #fa4545;
 
-  /* Typography */
-  --its-font-default: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --its-font-mono: "Fira Code", "Fira Code Medium", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Font stacks (ITS-inspired) */
+  --its-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --its-mono: "Fira Code", "Fira Code Medium", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --its-heading: "Suez One", "Calisto MT", "Palatino Black", "Book Antiqua", Georgia, serif;
 
-  /* Radii / shadows (Obsidian-like) */
-  --its-radius-sm: 8px;
-  --its-radius: 12px;
-  --its-radius-lg: 16px;
-  --its-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  --its-shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.22);
+  --its-radius: 10px;
+  --its-radius-lg: 14px;
+  --its-shadow-soft: 0 10px 22px rgba(0,0,0,.22);
 
-  /* Focus ring */
   --its-focus: color-mix(in oklab, var(--its-link) 45%, transparent);
+  --its-active-bg: rgba(193, 67, 67, 0.18);
 }
 
 /* -----------------------------
    2) Global base
 ------------------------------ */
 html, body {
-  background: var(--its-bg);
+  background: var(--its-bg) !important;
   color: var(--its-text);
-  font-family: var(--its-font-default);
+  font-family: var(--its-font);
 }
 
-/* Subtle ITS-ish background depth */
 body {
   background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(193, 67, 67, 0.12), transparent 60%),
-    radial-gradient(1000px 700px at 90% 10%, rgba(97, 175, 239, 0.10), transparent 55%),
-    var(--its-bg);
+    radial-gradient(900px 520px at 15% 0%, rgba(193, 67, 67, 0.10), transparent 60%),
+    radial-gradient(900px 520px at 85% 0%, rgba(97, 175, 239, 0.08), transparent 60%),
+    var(--its-bg) !important;
 }
 
-::selection { background: var(--its-highlight); }
+::selection { background: rgba(122, 20, 20, 0.40); }
 
-/* Better focus */
 :where(a, button, summary, input, textarea, select):focus-visible {
   outline: 3px solid var(--its-focus);
   outline-offset: 3px;
   border-radius: 10px;
 }
 
-/* Links */
 a {
   color: var(--its-link);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 a:hover {
-  color: color-mix(in oklab, var(--its-link) 80%, var(--its-headers));
+  color: color-mix(in oklab, var(--its-link) 78%, var(--its-h1));
 }
 
 /* -----------------------------
-   3) Layout chrome (best-effort Flowershow selectors)
+   3) Chrome: header / sidebars / toc
 ------------------------------ */
-:where(.site-navbar, header, body > header, body > nav) {
+:where(header, nav, .site-navbar, body > header, body > nav) {
   background: var(--its-outer-bar) !important;
+  border-bottom: 1px solid var(--its-rule);
+}
+
+:where(aside, .site-sidebar) {
+  background: var(--its-outer-bar) !important;
+  border-right: 1px solid var(--its-rule);
+}
+
+/* Sidebar / TOC links */
+:where(nav, aside) a {
+  color: color-mix(in oklab, var(--its-muted) 85%, var(--its-link));
+  text-decoration: none;
+}
+:where(nav, aside) a:hover {
+  color: var(--its-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:where(nav, aside) a[aria-current="page"],
+:where(nav, aside) a[aria-current="true"] {
   color: var(--its-text);
-  border-bottom: 1px solid var(--its-hr);
+  font-weight: 700;
+  background: var(--its-active-bg);
+  border-left: 3px solid var(--its-h1);
+  padding-left: 0.55rem;
+  border-radius: 6px;
 }
 
-:where(.site-sidebar, aside) {
-  background: var(--its-outer-bar);
-  border-right: 1px solid var(--its-hr);
-}
-
-/* Search / inputs in chrome */
+/* Inputs (search) */
 :where(header, nav, aside) :where(input, textarea) {
-  background: rgba(0, 0, 0, 0.30);
-  border: 1px solid color-mix(in oklab, var(--its-hr) 70%, transparent);
+  background: rgba(0,0,0,0.35);
   color: var(--its-text);
-  border-radius: var(--its-radius-sm);
+  border: 1px solid color-mix(in oklab, var(--its-rule) 70%, transparent);
+  border-radius: 8px;
 }
 
-/* “Card” surfaces (try to catch page containers) */
-:where(main, article, .content, .markdown, .prose) {
-  color: var(--its-text);
-}
-
-/* If Flowershow wraps content in a main card, this helps */
+/* -----------------------------
+   4) Main note surface
+------------------------------ */
 :where(main) :where(article, .prose, .markdown, .content) {
   background: var(--its-note);
-  border: 1px solid color-mix(in oklab, var(--its-hr) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--its-rule) 75%, transparent);
   border-radius: var(--its-radius-lg);
   box-shadow: var(--its-shadow-soft);
+  padding: 2rem 2.2rem;
+  max-width: 980px;
 }
 
 /* -----------------------------
-   4) Markdown typography (.prose)
+   5) Markdown typography (.prose)
 ------------------------------ */
 .prose {
   --tw-prose-body: var(--its-text);
-  --tw-prose-headings: var(--its-headers);
-  --tw-prose-lead: var(--its-text);
+  --tw-prose-headings: var(--its-text);
   --tw-prose-links: var(--its-link);
-  --tw-prose-bold: var(--its-text);
-  --tw-prose-counters: var(--its-soft-text);
-  --tw-prose-bullets: var(--its-soft-text);
-  --tw-prose-hr: var(--its-hr);
-  --tw-prose-quotes: var(--its-text);
-  --tw-prose-quote-borders: var(--its-hr);
-  --tw-prose-captions: var(--its-soft-text);
-  --tw-prose-code: var(--its-code-text);
-  --tw-prose-pre-code: var(--its-text);
+  --tw-prose-bullets: var(--its-muted);
+  --tw-prose-hr: var(--its-rule);
+  --tw-prose-code: var(--its-code-inline);
   --tw-prose-pre-bg: var(--its-code-bg);
-  --tw-prose-th-borders: var(--its-hr);
-  --tw-prose-td-borders: var(--its-hr);
+  --tw-prose-th-borders: var(--its-rule);
+  --tw-prose-td-borders: var(--its-rule);
 
-  font-family: var(--its-font-default);
+  font-family: var(--its-font);
 }
 
-/* Headings */
-.prose :where(h1, h2, h3, h4) {
-  letter-spacing: -0.015em;
+/* Headings use the ITS serif heading stack */
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--its-heading);
 }
-.prose h1 { font-weight: 800; }
-.prose h2 { border-bottom: 1px solid color-mix(in oklab, var(--its-hr) 70%, transparent); padding-bottom: 0.25rem; }
+
+/* H1 like ITS: red, uppercase, centered */
+.prose h1 {
+  color: var(--its-h1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 800;
+  text-align: center;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  margin-top: 0.2rem;
+  margin-bottom: 1.25rem;
+}
+
+/* H2/H3 like ITS: bright blue; italic parts orange */
+.prose h2,
+.prose h3 {
+  color: var(--its-link);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.prose h2 {
+  text-transform: uppercase;
+  font-size: clamp(1.25rem, 2.0vw, 1.65rem);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid color-mix(in oklab, var(--its-h1) 55%, var(--its-rule));
+  margin-top: 2.0rem;
+}
+
+.prose h3 {
+  font-size: 1.15rem;
+  margin-top: 1.35rem;
+}
+
+/* The italic parenthetical parts in headings */
+.prose :where(h1, h2, h3, h4) em {
+  color: var(--its-em);
+  font-style: italic;
+  font-weight: 700;
+  text-transform: none;
+}
+
+/* Dividers */
+.prose hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(193, 67, 67, 0.55), transparent);
+  margin: 2rem 0;
+}
 
 /* Inline code */
 .prose :not(pre) > code {
-  font-family: var(--its-font-mono);
+  font-family: var(--its-mono);
   background: color-mix(in oklab, var(--its-code-bg) 70%, var(--its-note) 30%);
-  color: var(--its-code-text);
-  border: 1px solid color-mix(in oklab, var(--its-hr) 65%, transparent);
+  color: var(--its-code-inline);
+  border: 1px solid color-mix(in oklab, var(--its-rule) 70%, transparent);
   border-radius: 8px;
   padding: 0.12em 0.35em;
 }
@@ -179,18 +227,18 @@ a:hover {
 /* Code blocks */
 .prose pre {
   background: var(--its-code-bg) !important;
-  border: 1px solid color-mix(in oklab, var(--its-hr) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--its-rule) 75%, transparent);
   border-radius: var(--its-radius-lg);
   box-shadow: var(--its-shadow-soft);
 }
 .prose pre code {
-  font-family: var(--its-font-mono);
+  font-family: var(--its-mono);
   color: var(--its-text);
 }
 
-/* Blockquotes (ITS vibe) */
+/* Blockquotes */
 .prose blockquote {
-  background: color-mix(in oklab, var(--its-aside-bg) 85%, transparent);
+  background: var(--its-panel);
   border-left: 4px solid var(--its-accent);
   border-radius: var(--its-radius);
   padding: 0.85rem 1rem;
@@ -200,25 +248,19 @@ a:hover {
 .prose table {
   border-collapse: separate;
   border-spacing: 0;
-  overflow: hidden;
-  border: 1px solid color-mix(in oklab, var(--its-hr) 75%, transparent);
+  border: 1px solid color-mix(in oklab, var(--its-rule) 80%, transparent);
   border-radius: var(--its-radius-lg);
+  overflow: hidden;
   box-shadow: var(--its-shadow-soft);
 }
 .prose thead th {
-  background: var(--its-table);
+  background: #283345;
   color: var(--its-text);
-  border-bottom: 1px solid var(--its-hr);
+  border-bottom: 1px solid var(--its-rule);
 }
-.prose tbody td {
-  background: color-mix(in oklab, var(--its-note) 82%, var(--its-td) 18%);
+.prose tbody tr:nth-child(2n) td {
+  background: color-mix(in oklab, var(--its-note) 86%, #000 14%);
 }
-.prose tbody tr:hover td {
-  background: color-mix(in oklab, var(--its-note) 70%, rgba(168, 60, 60, 0.25) 30%);
-}
-
-/* HR */
-.prose hr { border-color: var(--its-hr); }
 
 /* Images */
 .prose img {
@@ -227,58 +269,10 @@ a:hover {
 }
 
 /* -----------------------------
-   5) Callouts (remark-callouts / admonitions)
+   6) Mobile tightening
 ------------------------------ */
-.callout,
-.admonition {
-  background: var(--its-aside-bg);
-  border: 1px solid color-mix(in oklab, var(--its-hr) 75%, transparent);
-  border-left: 4px solid var(--its-link);
-  border-radius: var(--its-radius-lg);
-  box-shadow: var(--its-shadow-soft);
-  overflow: hidden;
-}
-
-.callout-title,
-.admonition-title {
-  padding: 0.75rem 0.95rem;
-  background: color-mix(in oklab, var(--its-aside-bg) 80%, var(--its-outer-bar) 20%);
-  border-bottom: 1px solid color-mix(in oklab, var(--its-hr) 75%, transparent);
-  font-weight: 700;
-}
-
-.callout-content,
-.admonition-content,
-.callout > p,
-.admonition > p {
-  padding: 0.85rem 0.95rem;
-}
-
-/* -----------------------------
-   6) Small polish
------------------------------- */
-hr {
-  border: none;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--its-hr), transparent);
-  margin: 1.25rem 0;
-}
-
-/* Scrollbar (Chromium/WebKit) */
-*::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: content-box;
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border: 2px solid transparent;
-  background-clip: content-box;
-}
-
-/* Reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
+@media (max-width: 640px) {
+  :where(main) :where(article, .prose, .markdown, .content) {
+    padding: 1.25rem 1.15rem;
+  }
 }
