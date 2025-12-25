@@ -1,3 +1,10 @@
 {
-  "showSidebar": true
+  "title": "Your Site Title",
+  "description": "An Obsidian-style wiki published with Flowershow",
+  "showSidebar": true,
+  "showToc": true,
+  "theme": {
+    "defaultMode": "dark",
+    "showModeSwitch": false
+  }
 }
