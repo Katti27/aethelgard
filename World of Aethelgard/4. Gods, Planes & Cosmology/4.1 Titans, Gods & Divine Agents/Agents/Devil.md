@@ -1,0 +1,15 @@
+---
+aliases:
+  - Devils
+  - Devil's
+  - devil
+  - devil's
+  - devils
+  - Erinyes
+  - erinyes
+  - Pit Fiend
+  - Lemure
+  - Lemures
+  - lemure
+  - lemures
+---

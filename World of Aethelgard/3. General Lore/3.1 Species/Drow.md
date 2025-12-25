@@ -1,0 +1,13 @@
+---
+aliases:
+  - Drow's
+  - drow
+  - drow's
+  - Dark Elf
+  - Dark Elves
+  - Dark Elf's
+  - dark elf
+  - dark elf's
+  - dark elves
+  - dark-elven
+---
