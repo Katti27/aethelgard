@@ -1,308 +1,308 @@
 /* ============================================================
-   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) + Fonts
-   ============================================================
-   This file recreates the *look* of Obsidian + ITS inside
-   Flowershow's HTML layout + Tailwind Typography (.prose).
+   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) — v4
+   Target: match your latest screenshots (Obsidian vs Flowershow)
 
-   Fonts:
-   - Inter (body)
-   - Fira Code (mono)
-   - Suez One (heading serif used in ITS stacks)
-
-   If you prefer self-hosting fonts instead of Google Fonts:
-   - Remove the @import line
-   - Add @font-face rules pointing to /fonts/*.woff2 in your repo.
+   Key changes vs v3:
+   - Style *page title* even if it's NOT inside .prose
+   - H1 = red display font + full underline
+   - H2 = orange display font + underline
+   - In-body links stay blue (ITS)
+   - Keep layout flat (no banner/card)
    ============================================================ */
 
-/* IMPORTANT: @import must come before all other rules. */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Suez+One&display=swap");
+/* Fonts:
+   - Inter: body
+   - Fira Code: code
+   - Cinzel Decorative: display headings close to your Obsidian screenshot
+*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&display=swap");
 
-/* -----------------------------
-   1) Dark tokens (ITS-like)
------------------------------- */
 :root,
 html,
 body,
 html[data-theme],
-body[data-theme] {
-  /* Force dark even if the app toggles attributes */
+body[data-theme]{
   color-scheme: dark;
 
-  /* Obsidian/ITS canvas */
-  --its-topbar: #0b0f13;
-  --its-app-bg: #252c36;
-  --its-note-bg: #1a1e24;
-  --its-panel-bg: #11151d;
+  /* Obsidian-like surfaces */
+  --topbar: #0b0f13;
+  --sidebar: #0b0f13;
+  --canvas: #1a1e24;         /* main editor background */
+  --outer: #252c36;          /* subtle outer background */
+  --panel: #11151d;
 
   /* Text */
-  --its-text: #cfd7dd;
-  --its-muted: #97a1b9;
-  --its-faint: #4e5b6f;
+  --text: #cfd7dd;
+  --muted: #97a1b9;
 
-  /* Accents */
-  --its-h1: #c14343;         /* red */
-  --its-link: #61afef;       /* bright blue */
-  --its-em: #e79c5d;         /* orange italics */
-  --its-accent: #863737;     /* deep red */
-  --its-rule: #2f3b4d;
+  /* ITS accents */
+  --red: #c14343;
+  --red-line: rgba(193, 67, 67, 0.65);
+  --orange: #e79c5d;
+  --orange-line: rgba(231, 156, 93, 0.70);
+  --blue: #61afef;
 
-  /* Code */
-  --its-code-bg: #232831;
-  --its-code-inline: #fa4545;
+  --rule: #2f3b4d;
 
   /* Fonts */
-  --its-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  --its-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --its-heading: "Suez One", "Calisto MT", "Palatino Black", "Book Antiqua", Georgia, serif;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --display: "Cinzel Decorative", "Cinzel", Georgia, serif;
+  --display-2: "Cinzel", Georgia, serif;
 
-  /* UI */
-  --its-radius: 10px;
-  --its-radius-lg: 14px;
-  --its-shadow-soft: 0 10px 22px rgba(0,0,0,.22);
-  --its-focus: color-mix(in oklab, var(--its-link) 45%, transparent);
-  --its-active-bg: rgba(193, 67, 67, 0.18);
+  --focus: color-mix(in oklab, var(--blue) 45%, transparent);
+  --active-bg: rgba(193, 67, 67, 0.18);
 }
 
-html, body {
-  background: var(--its-app-bg) !important;
-  color: var(--its-text);
-  font-family: var(--its-font);
+/* -----------------------------
+   Global base
+------------------------------ */
+html, body{
+  background: var(--canvas) !important;
+  color: var(--text);
+  font-family: var(--font);
 }
 
-::selection { background: rgba(122, 20, 20, 0.40); }
+body{
+  /* subtle outer depth like the app frame, but keep editor flat */
+  background:
+    radial-gradient(1100px 700px at 15% -10%, rgba(193, 67, 67, 0.10), transparent 60%),
+    radial-gradient(1100px 700px at 85% -10%, rgba(97, 175, 239, 0.08), transparent 60%),
+    var(--canvas) !important;
+}
 
-/* Focus */
-:where(a, button, summary, input, textarea, select):focus-visible {
-  outline: 3px solid var(--its-focus);
+::selection{ background: rgba(122, 20, 20, 0.40); }
+
+:where(a, button, summary, input, textarea, select):focus-visible{
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
   border-radius: 10px;
 }
 
 /* Links */
-a {
-  color: var(--its-link);
+a{
+  color: var(--blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-a:hover { color: color-mix(in oklab, var(--its-link) 78%, var(--its-h1)); }
+a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
 
 /* -----------------------------
-   2) Chrome: top bar / sidebars
-   (best-effort selectors for Flowershow layout)
+   Chrome (best-effort)
 ------------------------------ */
-:where(header, nav, .site-navbar, body > header, body > nav) {
-  background: var(--its-topbar) !important;
-  border-bottom: 1px solid var(--its-rule);
+:where(header, nav, .site-navbar, body > header, body > nav){
+  background: var(--topbar) !important;
+  border-bottom: 1px solid var(--rule);
 }
 
-/* Sidebars (left nav + right TOC both use aside on many themes) */
-:where(aside, .site-sidebar) {
-  background: var(--its-topbar) !important;
-  border-right: 1px solid var(--its-rule);
-}
-
-/* Panels (some themes render right TOC in a card) */
-:where(aside) :where(section, .card, [class*="panel"]) {
-  background: transparent;
+:where(aside, .site-sidebar){
+  background: var(--sidebar) !important;
+  border-right: 1px solid var(--rule);
 }
 
 /* Sidebar & TOC links */
-:where(nav, aside) a {
-  color: color-mix(in oklab, var(--its-muted) 85%, var(--its-link));
+:where(nav, aside) a{
+  color: color-mix(in oklab, var(--muted) 85%, var(--blue));
   text-decoration: none;
 }
-:where(nav, aside) a:hover {
-  color: var(--its-link);
+:where(nav, aside) a:hover{
+  color: var(--blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-
-/* Active entry */
 :where(nav, aside) a[aria-current="page"],
-:where(nav, aside) a[aria-current="true"] {
-  color: var(--its-text);
+:where(nav, aside) a[aria-current="true"]{
+  color: var(--text);
   font-weight: 700;
-  background: var(--its-active-bg);
-  border-left: 3px solid var(--its-h1);
+  background: var(--active-bg);
+  border-left: 3px solid var(--red);
   padding-left: 0.55rem;
   border-radius: 6px;
 }
 
-/* Search inputs */
-:where(header, nav, aside) :where(input, textarea) {
+/* Inputs */
+:where(header, nav, aside) :where(input, textarea){
   background: rgba(0,0,0,0.35);
-  color: var(--its-text);
-  border: 1px solid color-mix(in oklab, var(--its-rule) 70%, transparent);
+  color: var(--text);
+  border: 1px solid color-mix(in oklab, var(--rule) 70%, transparent);
   border-radius: 8px;
 }
 
 /* -----------------------------
-   3) Main "note" surface
+   Main content — FLAT (no card/banners)
 ------------------------------ */
-/* Many Flowershow themes wrap markdown in article/.prose */
-:where(main) :where(article, .prose, .markdown, .content) {
-  background: var(--its-note-bg);
-  border: 1px solid color-mix(in oklab, var(--its-rule) 75%, transparent);
-  border-radius: var(--its-radius-lg);
-  box-shadow: var(--its-shadow-soft);
+:where(main) :where(article, .prose, .markdown, .content){
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 
-  /* Obsidian-like padding */
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 1.75rem;
   max-width: 980px;
 }
 
-/* Nudge overall reading feel closer to Obsidian */
-.prose {
-  font-family: var(--its-font);
+/* -----------------------------
+   Typography (Tailwind Typography / .prose)
+------------------------------ */
+.prose{
+  font-family: var(--font);
   line-height: 1.62;
   font-size: 1rem;
 
-  /* Tailwind Typography tokens */
-  --tw-prose-body: var(--its-text);
-  --tw-prose-headings: var(--its-text);
-  --tw-prose-links: var(--its-link);
-  --tw-prose-bullets: var(--its-muted);
-  --tw-prose-counters: var(--its-muted);
-  --tw-prose-hr: var(--its-rule);
-  --tw-prose-quotes: var(--its-text);
-  --tw-prose-quote-borders: var(--its-rule);
-  --tw-prose-captions: var(--its-muted);
-  --tw-prose-code: var(--its-code-inline);
-  --tw-prose-pre-bg: var(--its-code-bg);
-  --tw-prose-th-borders: var(--its-rule);
-  --tw-prose-td-borders: var(--its-rule);
+  --tw-prose-body: var(--text);
+  --tw-prose-headings: var(--text);
+  --tw-prose-links: var(--blue);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-hr: var(--rule);
+  --tw-prose-quotes: var(--text);
+  --tw-prose-quote-borders: var(--rule);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: #fa4545;
+  --tw-prose-pre-bg: #232831;
+  --tw-prose-th-borders: var(--rule);
+  --tw-prose-td-borders: var(--rule);
 }
 
 /* -----------------------------
-   4) Headings: match your Obsidian screenshot
+   HEADINGS — apply even if the title is outside .prose
+   (Flowershow sometimes renders a page title wrapper)
 ------------------------------ */
-.prose :where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--its-heading);
-  letter-spacing: 0.01em;
-}
 
-/* H1: red, uppercase, centered */
-.prose h1 {
-  color: var(--its-h1);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 800;
-  text-align: center;
-  font-size: clamp(1.9rem, 2.7vw, 2.55rem);
-  margin: 0.2rem 0 1.15rem;
-}
+/* Page title + markdown h1 */
+:where(main, article) :where(h1){
+  /* kill any theme banner styles */
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
 
-/* H2/H3: bright blue (ITS), H2 uppercase */
-.prose h2,
-.prose h3 {
-  color: var(--its-link);
-  font-weight: 800;
-}
-
-.prose h2 {
-  text-transform: uppercase;
-  font-size: clamp(1.25rem, 2.0vw, 1.7rem);
-  padding-bottom: 0.35rem;
-  border-bottom: 2px solid color-mix(in oklab, var(--its-h1) 55%, var(--its-rule));
-  margin-top: 2.0rem;
-}
-
-.prose h3 {
-  font-size: 1.18rem;
-  margin-top: 1.35rem;
-}
-
-/* Orange italic in headings (your “( … )” text) */
-.prose :where(h1, h2, h3, h4) em {
-  color: var(--its-em);
-  font-style: italic;
-  font-weight: 700;
+  color: var(--red) !important;
+  font-family: var(--display) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em;
   text-transform: none;
+  text-align: left !important;
+
+  font-size: clamp(1.8rem, 2.4vw, 2.25rem) !important;
+  margin: 0.2rem 0 1rem !important;
+  padding: 0 !important;
+  position: relative;
+}
+
+/* Red underline under h1 like Obsidian */
+:where(main, article) :where(h1)::after{
+  content: "";
+  display: block;
+  margin-top: 0.35rem;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.10));
+}
+
+/* Section headings (H2) — orange like your Obsidian screenshot */
+:where(main, article, .prose) h2{
+  color: var(--orange) !important;
+  font-family: var(--display-2) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+  margin-top: 1.55rem !important;
+  margin-bottom: 0.55rem !important;
+  position: relative;
+  padding-bottom: 0.25rem !important;
+
+  /* Obsidian-ish small caps feel without forcing full uppercase */
+  font-variant: small-caps;
+}
+
+/* Orange underline */
+:where(main, article, .prose) h2::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--orange-line), rgba(231,156,93,0.12));
+}
+
+/* H3 — keep closer to Obsidian (slightly less loud than H2) */
+:where(main, article, .prose) h3{
+  color: var(--orange) !important;
+  font-family: var(--display-2) !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.01em;
+  margin-top: 1.15rem !important;
+  position: relative;
+  padding-bottom: 0.15rem !important;
+}
+:where(main, article, .prose) h3::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 55%;
+  height: 1px;
+  background: linear-gradient(to right, var(--orange-line), transparent);
+}
+
+/* Italic parentheticals in headings */
+:where(main, article, .prose) :where(h1,h2,h3,h4) em{
+  color: var(--orange) !important;
+  font-style: italic;
+  font-weight: 600;
 }
 
 /* -----------------------------
-   5) Rules / separators
+   HR / dividers
 ------------------------------ */
-.prose hr {
+.prose hr{
   border: none;
   height: 2px;
-  background: linear-gradient(to right, transparent, rgba(193, 67, 67, 0.55), transparent);
-  margin: 2rem 0;
+  background: linear-gradient(to right, transparent, var(--red-line), transparent);
+  margin: 1.8rem 0;
 }
 
 /* -----------------------------
-   6) Code
+   Code / blocks
 ------------------------------ */
-.prose :not(pre) > code {
-  font-family: var(--its-mono);
-  background: color-mix(in oklab, var(--its-code-bg) 70%, var(--its-note-bg) 30%);
-  color: var(--its-code-inline);
-  border: 1px solid color-mix(in oklab, var(--its-rule) 70%, transparent);
+.prose :not(pre) > code{
+  font-family: var(--mono);
+  background: color-mix(in oklab, #232831 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--rule) 70%, transparent);
   border-radius: 8px;
   padding: 0.12em 0.35em;
 }
 
-.prose pre {
-  background: var(--its-code-bg) !important;
-  border: 1px solid color-mix(in oklab, var(--its-rule) 75%, transparent);
-  border-radius: var(--its-radius-lg);
-  box-shadow: var(--its-shadow-soft);
-}
-.prose pre code {
-  font-family: var(--its-mono);
-  color: var(--its-text);
+.prose pre{
+  background: #232831 !important;
+  border: 1px solid color-mix(in oklab, var(--rule) 75%, transparent);
+  border-radius: 12px;
 }
 
-/* -----------------------------
-   7) Blockquotes / tables / images
------------------------------- */
-.prose blockquote {
-  background: var(--its-panel-bg);
-  border-left: 4px solid var(--its-accent);
-  border-radius: var(--its-radius);
+.prose blockquote{
+  background: var(--panel);
+  border-left: 4px solid var(--red-line);
+  border-radius: 10px;
   padding: 0.85rem 1rem;
 }
 
-.prose table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid color-mix(in oklab, var(--its-rule) 80%, transparent);
-  border-radius: var(--its-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--its-shadow-soft);
-}
-.prose thead th {
-  background: #283345;
-  color: var(--its-text);
-  border-bottom: 1px solid var(--its-rule);
-}
-.prose tbody tr:nth-child(2n) td {
-  background: color-mix(in oklab, var(--its-note-bg) 86%, #000 14%);
-}
-
-.prose img {
-  border-radius: var(--its-radius-lg);
-  box-shadow: var(--its-shadow-soft);
-}
-
 /* -----------------------------
-   8) Scrollbars (Chromium/WebKit)
+   Scrollbars (Chromium/WebKit)
 ------------------------------ */
-*::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar{ width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb{
   background: rgba(255,255,255,0.14);
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
-*::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+*::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.22); }
 
 /* -----------------------------
-   9) Mobile
+   Mobile
 ------------------------------ */
-@media (max-width: 640px) {
-  :where(main) :where(article, .prose, .markdown, .content) {
-    padding: 1.2rem 1.05rem;
-    border-radius: 12px;
+@media (max-width: 640px){
+  :where(main) :where(article, .prose, .markdown, .content){
+    padding: 1.1rem 1rem;
   }
 }
