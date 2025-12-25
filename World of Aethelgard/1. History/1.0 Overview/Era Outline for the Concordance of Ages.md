@@ -2,7 +2,7 @@
 title: Era Outline for the Concordance of Ages
 ---
 
-# **[[1.1 — AGE OF CREATION|1.1 — Age of Creation]]** 
+## **[[1.1 — AGE OF CREATION|1.1 — Age of Creation]]** 
 
 ### _(Timeless Mythic Prehistory)_
 
