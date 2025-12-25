@@ -1,1 +1,373 @@
+/*
+  custom.css — Flowershow Cloud starter theme (Parchment / Fantasy Wiki)
+  Put this file at the root of your repository as: custom.css
+*/
+
+/* ---------------------------
+   1) Theme tokens (edit these)
+---------------------------- */
+:root {
+  /* Typography */
+  --fs-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --fs-font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+  --fs-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Parchment palette (light) */
+  --fs-bg: #fbf5e8;
+  --fs-surface: #fffaf0;
+  --fs-surface-2: #f6edd8;
+  --fs-border: rgba(36, 26, 18, 0.14);
+  --fs-text: #241a12;
+  --fs-muted: rgba(36, 26, 18, 0.66);
+
+  --fs-accent: #0f766e;   /* teal */
+  --fs-accent-2: #b45309; /* amber */
+  --fs-link: #0f766e;
+  --fs-link-hover: #115e59;
+
+  --fs-shadow: 0 10px 30px rgba(36, 26, 18, 0.08);
+  --fs-radius: 14px;
+
+  /* Layout */
+  --fs-content-max: 78ch;     /* text measure */
+  --fs-content-pad: 24px;
+  --fs-block-gap: 0.9rem;
+
+  /* Code */
+  --fs-code-bg: rgba(36, 26, 18, 0.06);
+  --fs-code-border: rgba(36, 26, 18, 0.12);
+
+  /* Focus */
+  --fs-focus: rgba(15, 118, 110, 0.35);
+
+  /* Optional: if the Flowershow theme uses shadcn-style HSL vars, these overrides usually “just work” */
+  --background: 43 63% 95%;
+  --foreground: 24 33% 11%;
+  --card: 43 70% 97%;
+  --card-foreground: 24 33% 11%;
+  --muted: 41 45% 90%;
+  --muted-foreground: 24 20% 35%;
+  --border: 24 20% 78%;
+  --primary: 176 78% 26%;
+  --primary-foreground: 45 100% 98%;
+  --ring: 176 78% 26%;
+}
+
+/* Dark mode: supports either .dark (Tailwind convention) OR data-theme="dark" */
+.dark,
+[data-theme="dark"],
+[data-color-scheme="dark"] {
+  --fs-bg: #0f1212;
+  --fs-surface: #121717;
+  --fs-surface-2: #161d1d;
+  --fs-border: rgba(248, 231, 199, 0.14);
+  --fs-text: #f8e7c7;
+  --fs-muted: rgba(248, 231, 199, 0.72);
+
+  --fs-accent: #2dd4bf;
+  --fs-accent-2: #f59e0b;
+  --fs-link: #2dd4bf;
+  --fs-link-hover: #5eead4;
+
+  --fs-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+
+  --fs-code-bg: rgba(248, 231, 199, 0.07);
+  --fs-code-border: rgba(248, 231, 199, 0.14);
+
+  --background: 180 14% 7%;
+  --foreground: 40 78% 88%;
+  --card: 180 16% 9%;
+  --card-foreground: 40 78% 88%;
+  --muted: 180 14% 13%;
+  --muted-foreground: 40 40% 70%;
+  --border: 40 30% 25%;
+  --primary: 173 80% 45%;
+  --primary-foreground: 180 14% 7%;
+  --ring: 173 80% 45%;
+}
+
+/* If user’s system prefers dark and the site supports it, this helps too */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}
+
+/* ---------------------------
+   2) Global base
+---------------------------- */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fs-font-sans);
+  color: var(--fs-text);
+  background: radial-gradient(1200px 800px at 20% 0%, rgba(15, 118, 110, 0.06), transparent 60%),
+              radial-gradient(1000px 700px at 90% 10%, rgba(180, 83, 9, 0.07), transparent 55%),
+              var(--fs-bg);
+}
+
+/* Make long pages feel less “web app”, more “book” */
+:where(h1, h2, h3) {
+  font-family: var(--fs-font-serif);
+  letter-spacing: 0.2px;
+}
+
+/* Better focus rings */
+:where(a, button, summary, input, textarea, select):focus-visible {
+  outline: 3px solid var(--fs-focus);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Links */
+a {
+  color: var(--fs-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.2px;
+}
+a:hover {
+  color: var(--fs-link-hover);
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--fs-border), transparent);
+  margin: 1.25rem 0;
+}
+
+/* ---------------------------
+   3) Main content “prose” tuning
+   (works even if Flowershow uses different wrappers)
+---------------------------- */
+:where(main, article, .prose, .markdown, .content) :where(p, ul, ol) {
+  line-height: 1.7;
+}
+
+:where(main, article, .prose, .markdown, .content) {
+  /* Gentle inner card feel, without breaking layouts that already wrap content */
+  accent-color: var(--fs-accent);
+}
+
+/* Constrain reading width where possible */
+:where(main) :where(article, .prose, .markdown, .content) {
+  max-width: var(--fs-content-max);
+}
+
+/* Headings spacing */
+:where(h1) { margin-top: 0.4rem; margin-bottom: 0.6rem; }
+:where(h2) { margin-top: 1.8rem; margin-bottom: 0.7rem; }
+:where(h3) { margin-top: 1.4rem; margin-bottom: 0.6rem; }
+:where(h4) { margin-top: 1.2rem; margin-bottom: 0.5rem; }
+
+:where(h2, h3, h4) {
+  scroll-margin-top: 96px; /* nicer anchor jumps under a sticky header */
+}
+
+/* Lists */
+:where(ul, ol) { padding-left: 1.35rem; }
+:where(li) { margin: 0.22rem 0; }
+
+/* Images */
+img {
+  border-radius: calc(var(--fs-radius) - 6px);
+}
+:where(figure) {
+  margin: 1.2rem 0;
+}
+:where(figcaption) {
+  color: var(--fs-muted);
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+}
+
+/* Blockquotes (non-callout) */
+blockquote {
+  margin: 1.1rem 0;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.06), transparent);
+  border-left: 4px solid rgba(15, 118, 110, 0.35);
+  border-radius: 12px;
+  color: var(--fs-text);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1rem 0;
+  overflow: hidden;
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius);
+  box-shadow: var(--fs-shadow);
+  background: var(--fs-surface);
+}
+th, td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--fs-border);
+  vertical-align: top;
+}
+th {
+  text-align: left;
+  font-family: var(--fs-font-serif);
+  background: linear-gradient(180deg, rgba(180, 83, 9, 0.10), transparent);
+}
+tr:last-child td { border-bottom: none; }
+
+/* Code */
+code, pre, kbd, samp {
+  font-family: var(--fs-font-mono);
+}
+:not(pre) > code {
+  padding: 0.12rem 0.35rem;
+  border: 1px solid var(--fs-code-border);
+  background: var(--fs-code-bg);
+  border-radius: 10px;
+}
+pre {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--fs-code-border);
+  background: var(--fs-code-bg);
+  border-radius: var(--fs-radius);
+  overflow: auto;
+  box-shadow: var(--fs-shadow);
+}
+
+/* Details / spoilers (nice for lore) */
+details {
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius);
+  background: var(--fs-surface);
+  padding: 0.75rem 0.9rem;
+  box-shadow: var(--fs-shadow);
+}
+details > summary {
+  cursor: pointer;
+  font-family: var(--fs-font-serif);
+}
+details[open] > summary { margin-bottom: 0.6rem; }
+
+/* ---------------------------
+   4) Callouts (Flowershow remark-callouts)
+   Markdown:
+     > [!note]
+     > ...
+---------------------------- */
+.callout {
+  margin: 1.1rem 0;
+  border: 1px solid var(--fs-border);
+  background: var(--fs-surface);
+  border-radius: var(--fs-radius);
+  box-shadow: var(--fs-shadow);
+  overflow: hidden;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--fs-font-serif);
+  border-bottom: 1px solid var(--fs-border);
+  background: linear-gradient(180deg, rgba(36, 26, 18, 0.04), transparent);
+}
+
+.callout-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.callout > p,
+.callout > div,
+.callout-content {
+  padding: 0.85rem 0.9rem;
+}
+
+/* Type accents (matches remark-callouts types) */
+.callout-title.note,
+.callout-title.info { border-left: 5px solid rgba(15, 118, 110, 0.55); }
+
+.callout-title.tip,
+.callout-title.success { border-left: 5px solid rgba(34, 197, 94, 0.55); }
+
+.callout-title.warning { border-left: 5px solid rgba(245, 158, 11, 0.60); }
+
+.callout-title.danger,
+.callout-title.error { border-left: 5px solid rgba(239, 68, 68, 0.60); }
+
+.callout-title.quote { border-left: 5px solid rgba(148, 163, 184, 0.65); }
+
+/* ---------------------------
+   5) Nav / sidebar / TOC soft styling
+   (selectors are intentionally broad so it works across Flowershow layouts)
+---------------------------- */
+
+/* Sidebar-ish blocks */
+:where(aside, nav)[class*="sidebar"],
+:where(aside)[class*="nav"],
+:where(aside)[class*="tree"] {
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius);
+  background: var(--fs-surface);
+  box-shadow: var(--fs-shadow);
+}
+
+/* Nav links */
+:where(nav) a {
+  text-decoration: none;
+}
+:where(nav) a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* “Active” links (best-effort) */
+:where(nav) a[aria-current="page"],
+:where(nav) a[aria-current="true"] {
+  color: var(--fs-link-hover);
+  font-weight: 700;
+}
+
+/* TOC */
+:where([class*="toc"], #toc) a {
+  color: var(--fs-muted);
+  text-decoration: none;
+}
+:where([class*="toc"], #toc) a:hover {
+  color: var(--fs-text);
+  text-decoration: underline;
+}
+
+/* ---------------------------
+   6) Small polish
+---------------------------- */
+::selection {
+  background: rgba(180, 83, 9, 0.22);
+}
+
+/* Subtle scrollbars (Chromium/WebKit) */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: rgba(36, 26, 18, 0.18);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(36, 26, 18, 0.28);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Mobile: a little tighter */
+@media (max-width: 640px) {
+  :root {
+    --fs-content-pad: 18px;
+    --fs-radius: 12px;
+  }
+  pre { padding: 0.85rem 0.9rem; }
+}
 
