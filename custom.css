@@ -1,20 +1,18 @@
 /* ============================================================
-   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) — v4
-   Target: match your latest screenshots (Obsidian vs Flowershow)
+   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) — v6
+   Updated rule: BLUE = links (per your note).
+   So headings are NEVER blue by default.
 
-   Key changes vs v3:
-   - Style *page title* even if it's NOT inside .prose
-   - H1 = red display font + full underline
-   - H2 = orange display font + underline
-   - In-body links stay blue (ITS)
-   - Keep layout flat (no banner/card)
+   Heading palette (matches your Obsidian screenshots better):
+   - H1 (page title): RED display + underline
+   - H2: RED + underline  (e.g. "The Upper Planes — ...")
+   - H3: ORANGE + underline (e.g. "Awakening Regions", sub-sections)
+   - Links (including wiki links and TOC): BLUE
+
+   Layout stays flat (no card/banner blocks).
    ============================================================ */
 
-/* Fonts:
-   - Inter: body
-   - Fira Code: code
-   - Cinzel Decorative: display headings close to your Obsidian screenshot
-*/
+/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&display=swap");
 
 :root,
@@ -24,27 +22,24 @@ html[data-theme],
 body[data-theme]{
   color-scheme: dark;
 
-  /* Obsidian-like surfaces */
   --topbar: #0b0f13;
   --sidebar: #0b0f13;
-  --canvas: #1a1e24;         /* main editor background */
-  --outer: #252c36;          /* subtle outer background */
+  --canvas: #1a1e24;
   --panel: #11151d;
 
-  /* Text */
   --text: #cfd7dd;
   --muted: #97a1b9;
 
-  /* ITS accents */
   --red: #c14343;
-  --red-line: rgba(193, 67, 67, 0.65);
+  --red-line: rgba(193, 67, 67, 0.70);
+
   --orange: #e79c5d;
-  --orange-line: rgba(231, 156, 93, 0.70);
+  --orange-line: rgba(231, 156, 93, 0.75);
+
   --blue: #61afef;
 
   --rule: #2f3b4d;
 
-  /* Fonts */
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
   --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --display: "Cinzel Decorative", "Cinzel", Georgia, serif;
@@ -54,21 +49,11 @@ body[data-theme]{
   --active-bg: rgba(193, 67, 67, 0.18);
 }
 
-/* -----------------------------
-   Global base
------------------------------- */
+/* Base */
 html, body{
   background: var(--canvas) !important;
   color: var(--text);
   font-family: var(--font);
-}
-
-body{
-  /* subtle outer depth like the app frame, but keep editor flat */
-  background:
-    radial-gradient(1100px 700px at 15% -10%, rgba(193, 67, 67, 0.10), transparent 60%),
-    radial-gradient(1100px 700px at 85% -10%, rgba(97, 175, 239, 0.08), transparent 60%),
-    var(--canvas) !important;
 }
 
 ::selection{ background: rgba(122, 20, 20, 0.40); }
@@ -79,28 +64,27 @@ body{
   border-radius: 10px;
 }
 
-/* Links */
-a{
+/* Content links = blue */
+:where(main, article, .prose) a{
   color: var(--blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
+:where(main, article, .prose) a:hover{
+  color: color-mix(in oklab, var(--blue) 78%, var(--red));
+}
 
-/* -----------------------------
-   Chrome (best-effort)
------------------------------- */
+/* Chrome */
 :where(header, nav, .site-navbar, body > header, body > nav){
   background: var(--topbar) !important;
   border-bottom: 1px solid var(--rule);
 }
-
 :where(aside, .site-sidebar){
   background: var(--sidebar) !important;
   border-right: 1px solid var(--rule);
 }
 
-/* Sidebar & TOC links */
+/* Sidebar/TOC links */
 :where(nav, aside) a{
   color: color-mix(in oklab, var(--muted) 85%, var(--blue));
   text-decoration: none;
@@ -128,22 +112,17 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   border-radius: 8px;
 }
 
-/* -----------------------------
-   Main content — FLAT (no card/banners)
------------------------------- */
+/* Flat editor content */
 :where(main) :where(article, .prose, .markdown, .content){
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-
   padding: 1.5rem 1.75rem;
   max-width: 980px;
 }
 
-/* -----------------------------
-   Typography (Tailwind Typography / .prose)
------------------------------- */
+/* Prose tokens */
 .prose{
   font-family: var(--font);
   line-height: 1.62;
@@ -165,13 +144,11 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
 }
 
 /* -----------------------------
-   HEADINGS — apply even if the title is outside .prose
-   (Flowershow sometimes renders a page title wrapper)
+   Headings (catch both inside and outside .prose)
 ------------------------------ */
 
-/* Page title + markdown h1 */
-:where(main, article) :where(h1){
-  /* kill any theme banner styles */
+/* Page title H1 */
+:where(main, article) h1{
   background: transparent !important;
   box-shadow: none !important;
   border: 0 !important;
@@ -180,17 +157,13 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   font-family: var(--display) !important;
   font-weight: 700 !important;
   letter-spacing: 0.03em;
-  text-transform: none;
   text-align: left !important;
 
   font-size: clamp(1.8rem, 2.4vw, 2.25rem) !important;
   margin: 0.2rem 0 1rem !important;
   padding: 0 !important;
-  position: relative;
 }
-
-/* Red underline under h1 like Obsidian */
-:where(main, article) :where(h1)::after{
+:where(main, article) h1::after{
   content: "";
   display: block;
   margin-top: 0.35rem;
@@ -199,9 +172,9 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.10));
 }
 
-/* Section headings (H2) — orange like your Obsidian screenshot */
+/* H2 = RED (never blue) */
 :where(main, article, .prose) h2{
-  color: var(--orange) !important;
+  color: var(--red) !important;
   font-family: var(--display-2) !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em;
@@ -209,12 +182,8 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   margin-bottom: 0.55rem !important;
   position: relative;
   padding-bottom: 0.25rem !important;
-
-  /* Obsidian-ish small caps feel without forcing full uppercase */
   font-variant: small-caps;
 }
-
-/* Orange underline */
 :where(main, article, .prose) h2::after{
   content: "";
   position: absolute;
@@ -222,16 +191,17 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   bottom: -2px;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, var(--orange-line), rgba(231,156,93,0.12));
+  background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.12));
 }
 
-/* H3 — keep closer to Obsidian (slightly less loud than H2) */
+/* H3 = ORANGE */
 :where(main, article, .prose) h3{
   color: var(--orange) !important;
   font-family: var(--display-2) !important;
-  font-weight: 650 !important;
+  font-weight: 700 !important;
   letter-spacing: 0.01em;
   margin-top: 1.15rem !important;
+  margin-bottom: 0.45rem !important;
   position: relative;
   padding-bottom: 0.15rem !important;
 }
@@ -240,21 +210,26 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   position: absolute;
   left: 0;
   bottom: -2px;
-  width: 55%;
-  height: 1px;
+  width: 60%;
+  height: 2px;
   background: linear-gradient(to right, var(--orange-line), transparent);
 }
 
-/* Italic parentheticals in headings */
+/* H4+ muted (no blue) */
+:where(main, article, .prose) :where(h4,h5,h6){
+  color: color-mix(in oklab, var(--text) 80%, var(--muted)) !important;
+  font-family: var(--font) !important;
+  font-weight: 700;
+}
+
+/* Italics in headings (e.g., dates) */
 :where(main, article, .prose) :where(h1,h2,h3,h4) em{
   color: var(--orange) !important;
   font-style: italic;
   font-weight: 600;
 }
 
-/* -----------------------------
-   HR / dividers
------------------------------- */
+/* HR */
 .prose hr{
   border: none;
   height: 2px;
@@ -262,9 +237,13 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   margin: 1.8rem 0;
 }
 
-/* -----------------------------
-   Code / blocks
------------------------------- */
+/* Lists: keep bullets subtle but readable */
+.prose ul > li::marker,
+.prose ol > li::marker{
+  color: color-mix(in oklab, var(--muted) 80%, var(--red));
+}
+
+/* Code */
 .prose :not(pre) > code{
   font-family: var(--mono);
   background: color-mix(in oklab, #232831 70%, transparent);
@@ -272,13 +251,13 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   border-radius: 8px;
   padding: 0.12em 0.35em;
 }
-
 .prose pre{
   background: #232831 !important;
   border: 1px solid color-mix(in oklab, var(--rule) 75%, transparent);
   border-radius: 12px;
 }
 
+/* Blockquotes */
 .prose blockquote{
   background: var(--panel);
   border-left: 4px solid var(--red-line);
@@ -286,9 +265,7 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
   padding: 0.85rem 1rem;
 }
 
-/* -----------------------------
-   Scrollbars (Chromium/WebKit)
------------------------------- */
+/* Scrollbar */
 *::-webkit-scrollbar{ width: 10px; height: 10px; }
 *::-webkit-scrollbar-thumb{
   background: rgba(255,255,255,0.14);
@@ -298,9 +275,7 @@ a:hover{ color: color-mix(in oklab, var(--blue) 78%, var(--red)); }
 }
 *::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.22); }
 
-/* -----------------------------
-   Mobile
------------------------------- */
+/* Mobile */
 @media (max-width: 640px){
   :where(main) :where(article, .prose, .markdown, .content){
     padding: 1.1rem 1rem;
