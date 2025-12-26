@@ -240,3 +240,29 @@ html, body{
     padding: 1.1rem 1rem;
   }
 }
+/* Flowershow – HR (---) color fix only
+   Keeps all normal links blue.
+   Add this at the END of your existing custom.css.
+*/
+
+:root {
+  /* Match your Obsidian underline red */
+  --its-underline-red: #7b1d1d;
+}
+
+/* Markdown --- renders as <hr> */
+.prose hr,
+hr {
+  border: 0 !important;
+  border-top: 2px solid var(--its-underline-red) !important;
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
+/* Some themes render HR as a background gradient; kill that */
+.prose hr::before,
+.prose hr::after,
+hr::before,
+hr::after {
+  display: none !important;
+}
