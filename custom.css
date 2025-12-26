@@ -1,15 +1,11 @@
 /* ============================================================
-   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) — v6
-   Updated rule: BLUE = links (per your note).
-   So headings are NEVER blue by default.
+   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) — v7
+   Fixes requested:
+   1) Links still appear grey -> force ALL content anchors to blue (!important)
+   2) Black title box behind H1 -> remove background on common H1 wrapper blocks
+      (uses :has() where supported + safe fallbacks)
 
-   Heading palette (matches your Obsidian screenshots better):
-   - H1 (page title): RED display + underline
-   - H2: RED + underline  (e.g. "The Upper Planes — ...")
-   - H3: ORANGE + underline (e.g. "Awakening Regions", sub-sections)
-   - Links (including wiki links and TOC): BLUE
-
-   Layout stays flat (no card/banner blocks).
+   Rule reminder: BLUE = links only.
    ============================================================ */
 
 /* Fonts */
@@ -64,16 +60,6 @@ html, body{
   border-radius: 10px;
 }
 
-/* Content links = blue */
-:where(main, article, .prose) a{
-  color: var(--blue);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-:where(main, article, .prose) a:hover{
-  color: color-mix(in oklab, var(--blue) 78%, var(--red));
-}
-
 /* Chrome */
 :where(header, nav, .site-navbar, body > header, body > nav){
   background: var(--topbar) !important;
@@ -86,17 +72,17 @@ html, body{
 
 /* Sidebar/TOC links */
 :where(nav, aside) a{
-  color: color-mix(in oklab, var(--muted) 85%, var(--blue));
+  color: color-mix(in oklab, var(--muted) 85%, var(--blue)) !important;
   text-decoration: none;
 }
 :where(nav, aside) a:hover{
-  color: var(--blue);
+  color: var(--blue) !important;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 :where(nav, aside) a[aria-current="page"],
 :where(nav, aside) a[aria-current="true"]{
-  color: var(--text);
+  color: var(--text) !important;
   font-weight: 700;
   background: var(--active-bg);
   border-left: 3px solid var(--red);
@@ -143,11 +129,66 @@ html, body{
   --tw-prose-td-borders: var(--rule);
 }
 
+/* ============================================================
+   FIX 1: FORCE LINKS BLUE (content area)
+   Some Flowershow pages apply Tailwind utility colors directly
+   onto <a> tags, which can override weaker selectors.
+   We intentionally use !important to win.
+   ============================================================ */
+:where(main, article, .prose) a,
+:where(main, article, .prose) a:visited,
+:where(main, article, .prose) a:active{
+  color: var(--blue) !important;
+}
+
+/* Obsidian-ish: no underline by default, underline on hover */
+:where(main, article, .prose) a{
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(97,175,239,0.35);
+  padding-bottom: 1px;
+}
+:where(main, article, .prose) a:hover{
+  border-bottom-color: rgba(97,175,239,0.85);
+}
+
+/* Make sure link-like lists (your “Era Outline” entries) inherit the same */
+:where(main, article, .prose) li a{
+  color: var(--blue) !important;
+}
+
+/* ============================================================
+   FIX 2: REMOVE BLACK TITLE BOX (H1 wrapper)
+   Flowershow sometimes wraps the title in a div/header with a
+   background class. We strip it if it contains an H1.
+   ============================================================ */
+
+/* If browser supports :has() */
+:where(main) :where(div, header, section):has(> h1){
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Extra: any element with bg-* class that contains h1 */
+:where(main) :where([class*="bg-"]):has(h1){
+  background: transparent !important;
+}
+
+/* Fallback (no :has): the first block inside the article is almost always the title wrapper */
+:where(main) :where(article, .prose, .markdown, .content) > :first-child{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
 /* -----------------------------
-   Headings (catch both inside and outside .prose)
+   Headings (no blue headings)
 ------------------------------ */
 
-/* Page title H1 */
+/* H1 */
 :where(main, article) h1{
   background: transparent !important;
   box-shadow: none !important;
@@ -172,7 +213,7 @@ html, body{
   background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.10));
 }
 
-/* H2 = RED (never blue) */
+/* H2 */
 :where(main, article, .prose) h2{
   color: var(--red) !important;
   font-family: var(--display-2) !important;
@@ -194,7 +235,7 @@ html, body{
   background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.12));
 }
 
-/* H3 = ORANGE */
+/* H3 */
 :where(main, article, .prose) h3{
   color: var(--orange) !important;
   font-family: var(--display-2) !important;
@@ -215,14 +256,14 @@ html, body{
   background: linear-gradient(to right, var(--orange-line), transparent);
 }
 
-/* H4+ muted (no blue) */
+/* H4+ muted */
 :where(main, article, .prose) :where(h4,h5,h6){
   color: color-mix(in oklab, var(--text) 80%, var(--muted)) !important;
   font-family: var(--font) !important;
   font-weight: 700;
 }
 
-/* Italics in headings (e.g., dates) */
+/* Italics in headings */
 :where(main, article, .prose) :where(h1,h2,h3,h4) em{
   color: var(--orange) !important;
   font-style: italic;
@@ -237,7 +278,7 @@ html, body{
   margin: 1.8rem 0;
 }
 
-/* Lists: keep bullets subtle but readable */
+/* Lists: markers */
 .prose ul > li::marker,
 .prose ol > li::marker{
   color: color-mix(in oklab, var(--muted) 80%, var(--red));
