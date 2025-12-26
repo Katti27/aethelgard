@@ -1,5 +1,0 @@
----
-aliases:
-  - Tiamat
-  - Dragon Queen
----
