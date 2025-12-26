@@ -1,5 +1,5 @@
 
-## **[[1.1 — AGE OF CREATION (Timeless Mythic Prehistory)|1.1 — Age of Creation]]** _(Timeless Mythic Prehistory)_
+## **[[1.1 — AGE OF CREATION (Timeless Mythic Prehistory)]]**
 
 **[[1.1.1 — The Formless Aeon]]**  
 
@@ -13,7 +13,7 @@
 
 ---
 
-## **[[1.2 — THE FIRST PEOPLES (c. –8200 to –6100 BC)]]** _(c. –8200 to –6100 BC)_
+## **[[1.2 — THE FIRST PEOPLES (c. –8200 to –6100 BC)]]**
 
 **[[1.2.1 — Awakening of the Elves]] (c. –8170)**  
 
@@ -27,7 +27,7 @@
 
 ---
 
-## **[[1.3 — THE AGE OF FORMATION (c. –6100 to –4250 BC)]]** _(c. –6100 to –4250 BC)_
+## **[[1.3 — THE AGE OF FORMATION (c. –6100 to –4250 BC)]]**
 
 **[[1.3.1 — Verdant Circles Coalesce]] (c. –5890)**  
 
@@ -43,7 +43,7 @@
 
 ---
 
-## **[[1.4 — DAWN OF YOUNGER PEOPLES (c. –4250 to –3620 BC)]]** _(c. –4250 to –3620 BC)_
+## **[[1.4 — DAWN OF YOUNGER PEOPLES (c. –4250 to –3620 BC)]]**
 
 **[[1.4.1 — Founding of Khunzar]] (c. –4125)**  
 
@@ -59,7 +59,7 @@
 
 ---
 
-## **[[1.5 — SCHISMS OF THE FIRST RACES (c. –3620 to –3020 BC)]]** _(c. –3620 to –3020 BC)_
+## **[[1.5 — SCHISMS OF THE FIRST RACES (c. –3620 to –3020 BC)]]**
 
 **[[1.5.1 — Drow Schism Begins]] (c. –3595)**  
 
@@ -73,7 +73,7 @@
 
 ---
 
-## **[[1.6 — ARCANE EXPANSION & EARLY HUMAN ORDER (c. –3020 to –1710 BC)]]** _(c. –3020 to –1710 BC)_
+## **[[1.6 — ARCANE EXPANSION & EARLY HUMAN ORDER (c. –3020 to –1710 BC)]]**
 
 **[[1.6.1 — Verdant Court of Eluthariel]] (c. –2975)**  
 
