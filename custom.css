@@ -1,14 +1,14 @@
 /* ============================================================
-   Flowershow Cloud — Obsidian ITS-inspired (DARK ONLY) — v7
-   Fixes requested:
-   1) Links still appear grey -> force ALL content anchors to blue (!important)
-   2) Black title box behind H1 -> remove background on common H1 wrapper blocks
-      (uses :has() where supported + safe fallbacks)
-
-   Rule reminder: BLUE = links only.
+   Flowershow Cloud — Obsidian ITS (WotC Beyond-inspired) DARK ONLY
+   Matches your current Obsidian styling rules:
+   - ALL headings (H1–H6) + page title: GOLD (H2 color vibe)
+   - Heading underline bars: DEEP RED (H3 underline vibe)
+   - BLUE is reserved for links
+   - Flat “editor canvas” (no card/banners)
+   - Uses Inter (body), Fira Code (mono), Cinzel Decorative (headings)
    ============================================================ */
 
-/* Fonts */
+/* Fonts (Google Fonts). If you prefer self-hosting, replace with @font-face. */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&display=swap");
 
 :root,
@@ -18,74 +18,75 @@ html[data-theme],
 body[data-theme]{
   color-scheme: dark;
 
-  --topbar: #0b0f13;
-  --sidebar: #0b0f13;
-  --canvas: #1a1e24;
-  --panel: #11151d;
+  /* Surfaces */
+  --fs-frame: #0b0f13;
+  --fs-canvas: #1a1e24;
 
-  --text: #cfd7dd;
-  --muted: #97a1b9;
+  /* Text */
+  --fs-text: #cfd7dd;
+  --fs-muted: #97a1b9;
 
-  --red: #c14343;
-  --red-line: rgba(193, 67, 67, 0.70);
+  /* Theme accents (tweak these 3 to taste) */
+  --fs-link: #61afef;        /* links = blue */
+  --fs-heading: #e1c36d;     /* headings/title = gold (H2-ish) */
+  --fs-underline: #a11111;   /* underline bars = deep red (H3-ish) */
 
-  --orange: #e79c5d;
-  --orange-line: rgba(231, 156, 93, 0.75);
+  --fs-rule: #2f3b4d;
+  --fs-panel: #11151d;
 
-  --blue: #61afef;
+  /* Typography */
+  --fs-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --fs-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --fs-display: "Cinzel Decorative", "Cinzel", Georgia, serif;
 
-  --rule: #2f3b4d;
-
-  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --display: "Cinzel Decorative", "Cinzel", Georgia, serif;
-  --display-2: "Cinzel", Georgia, serif;
-
-  --focus: color-mix(in oklab, var(--blue) 45%, transparent);
-  --active-bg: rgba(193, 67, 67, 0.18);
+  --fs-focus: color-mix(in oklab, var(--fs-link) 45%, transparent);
+  --fs-active-bg: rgba(161, 17, 17, 0.18);
 }
 
 /* Base */
 html, body{
-  background: var(--canvas) !important;
-  color: var(--text);
-  font-family: var(--font);
+  background: var(--fs-canvas) !important;
+  color: var(--fs-text);
+  font-family: var(--fs-font);
 }
 
-::selection{ background: rgba(122, 20, 20, 0.40); }
+::selection{ background: rgba(161, 17, 17, 0.40); }
 
 :where(a, button, summary, input, textarea, select):focus-visible{
-  outline: 3px solid var(--focus);
+  outline: 3px solid var(--fs-focus);
   outline-offset: 3px;
   border-radius: 10px;
 }
 
-/* Chrome */
+/* ------------------------------------------------------------
+   Chrome (best-effort selectors for Flowershow)
+------------------------------------------------------------ */
 :where(header, nav, .site-navbar, body > header, body > nav){
-  background: var(--topbar) !important;
-  border-bottom: 1px solid var(--rule);
-}
-:where(aside, .site-sidebar){
-  background: var(--sidebar) !important;
-  border-right: 1px solid var(--rule);
+  background: var(--fs-frame) !important;
+  border-bottom: 1px solid var(--fs-rule);
 }
 
-/* Sidebar/TOC links */
+:where(aside, .site-sidebar){
+  background: var(--fs-frame) !important;
+  border-right: 1px solid var(--fs-rule);
+}
+
+/* Sidebar / TOC links (kept muted; blue on hover/active) */
 :where(nav, aside) a{
-  color: color-mix(in oklab, var(--muted) 85%, var(--blue)) !important;
-  text-decoration: none;
+  color: color-mix(in oklab, var(--fs-muted) 90%, var(--fs-link)) !important;
+  text-decoration: none !important;
 }
 :where(nav, aside) a:hover{
-  color: var(--blue) !important;
+  color: var(--fs-link) !important;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 :where(nav, aside) a[aria-current="page"],
 :where(nav, aside) a[aria-current="true"]{
-  color: var(--text) !important;
+  color: var(--fs-text) !important;
   font-weight: 700;
-  background: var(--active-bg);
-  border-left: 3px solid var(--red);
+  background: var(--fs-active-bg);
+  border-left: 3px solid var(--fs-underline);
   padding-left: 0.55rem;
   border-radius: 6px;
 }
@@ -93,12 +94,14 @@ html, body{
 /* Inputs */
 :where(header, nav, aside) :where(input, textarea){
   background: rgba(0,0,0,0.35);
-  color: var(--text);
-  border: 1px solid color-mix(in oklab, var(--rule) 70%, transparent);
+  color: var(--fs-text);
+  border: 1px solid color-mix(in oklab, var(--fs-rule) 70%, transparent);
   border-radius: 8px;
 }
 
-/* Flat editor content */
+/* ------------------------------------------------------------
+   Main content — flat canvas (no card/banners)
+------------------------------------------------------------ */
 :where(main) :where(article, .prose, .markdown, .content){
   background: transparent !important;
   border: none !important;
@@ -108,61 +111,7 @@ html, body{
   max-width: 980px;
 }
 
-/* Prose tokens */
-.prose{
-  font-family: var(--font);
-  line-height: 1.62;
-  font-size: 1rem;
-
-  --tw-prose-body: var(--text);
-  --tw-prose-headings: var(--text);
-  --tw-prose-links: var(--blue);
-  --tw-prose-bullets: var(--muted);
-  --tw-prose-counters: var(--muted);
-  --tw-prose-hr: var(--rule);
-  --tw-prose-quotes: var(--text);
-  --tw-prose-quote-borders: var(--rule);
-  --tw-prose-captions: var(--muted);
-  --tw-prose-code: #fa4545;
-  --tw-prose-pre-bg: #232831;
-  --tw-prose-th-borders: var(--rule);
-  --tw-prose-td-borders: var(--rule);
-}
-
-/* ============================================================
-   FIX 1: FORCE LINKS BLUE (content area)
-   Some Flowershow pages apply Tailwind utility colors directly
-   onto <a> tags, which can override weaker selectors.
-   We intentionally use !important to win.
-   ============================================================ */
-:where(main, article, .prose) a,
-:where(main, article, .prose) a:visited,
-:where(main, article, .prose) a:active{
-  color: var(--blue) !important;
-}
-
-/* Obsidian-ish: no underline by default, underline on hover */
-:where(main, article, .prose) a{
-  text-decoration: none !important;
-  border-bottom: 1px solid rgba(97,175,239,0.35);
-  padding-bottom: 1px;
-}
-:where(main, article, .prose) a:hover{
-  border-bottom-color: rgba(97,175,239,0.85);
-}
-
-/* Make sure link-like lists (your “Era Outline” entries) inherit the same */
-:where(main, article, .prose) li a{
-  color: var(--blue) !important;
-}
-
-/* ============================================================
-   FIX 2: REMOVE BLACK TITLE BOX (H1 wrapper)
-   Flowershow sometimes wraps the title in a div/header with a
-   background class. We strip it if it contains an H1.
-   ============================================================ */
-
-/* If browser supports :has() */
+/* If Flowershow wraps the title in a "black box", strip it */
 :where(main) :where(div, header, section):has(> h1){
   background: transparent !important;
   box-shadow: none !important;
@@ -171,150 +120,119 @@ html, body{
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-
-/* Extra: any element with bg-* class that contains h1 */
-:where(main) :where([class*="bg-"]):has(h1){
-  background: transparent !important;
-}
-
-/* Fallback (no :has): the first block inside the article is almost always the title wrapper */
 :where(main) :where(article, .prose, .markdown, .content) > :first-child{
   background: transparent !important;
   box-shadow: none !important;
   border: 0 !important;
 }
 
-/* -----------------------------
-   Headings (no blue headings)
------------------------------- */
+/* ------------------------------------------------------------
+   Typography (.prose = Tailwind Typography)
+------------------------------------------------------------ */
+.prose{
+  font-family: var(--fs-font);
+  line-height: 1.62;
+  font-size: 1rem;
 
-/* H1 */
+  --tw-prose-body: var(--fs-text);
+  --tw-prose-headings: var(--fs-text);
+  --tw-prose-links: var(--fs-link);
+  --tw-prose-bullets: var(--fs-muted);
+  --tw-prose-counters: var(--fs-muted);
+  --tw-prose-hr: var(--fs-rule);
+  --tw-prose-quotes: var(--fs-text);
+  --tw-prose-quote-borders: var(--fs-rule);
+  --tw-prose-captions: var(--fs-muted);
+  --tw-prose-code: #fa4545;
+  --tw-prose-pre-bg: #232831;
+  --tw-prose-th-borders: var(--fs-rule);
+  --tw-prose-td-borders: var(--fs-rule);
+}
+
+/* LINKS: force blue everywhere in content (Flowershow can override with text-* utilities) */
+:where(main, article, .prose) a,
+:where(main, article, .prose) a:visited,
+:where(main, article, .prose) a:active{
+  color: var(--fs-link) !important;
+}
+
+/* Obsidian-ish link feel: no underline, subtle bottom rule */
+:where(main, article, .prose) a{
+  text-decoration: none !important;
+  border-bottom: 1px solid color-mix(in oklab, var(--fs-link) 40%, transparent);
+  padding-bottom: 1px;
+}
+:where(main, article, .prose) a:hover{
+  border-bottom-color: color-mix(in oklab, var(--fs-link) 85%, transparent);
+}
+
+/* ------------------------------------------------------------
+   Headings: ALL gold + red underline bars (no blue headings)
+------------------------------------------------------------ */
+:where(main, article, .prose) :where(h1,h2,h3,h4,h5,h6){
+  color: var(--fs-heading) !important;
+  font-family: var(--fs-display) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+/* Page title / H1 sizing */
 :where(main, article) h1{
-  background: transparent !important;
-  box-shadow: none !important;
-  border: 0 !important;
-
-  color: var(--red) !important;
-  font-family: var(--display) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.03em;
-  text-align: left !important;
-
   font-size: clamp(1.8rem, 2.4vw, 2.25rem) !important;
   margin: 0.2rem 0 1rem !important;
-  padding: 0 !important;
-}
-:where(main, article) h1::after{
-  content: "";
-  display: block;
-  margin-top: 0.35rem;
-  height: 2px;
-  width: 100%;
-  background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.10));
 }
 
-/* H2 */
-:where(main, article, .prose) h2{
-  color: var(--red) !important;
-  font-family: var(--display-2) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em;
-  margin-top: 1.55rem !important;
-  margin-bottom: 0.55rem !important;
-  position: relative;
-  padding-bottom: 0.25rem !important;
-  font-variant: small-caps;
-}
-:where(main, article, .prose) h2::after{
+/* Section heading sizing */
+:where(main, article, .prose) h2{ font-size: clamp(1.25rem, 1.9vw, 1.6rem) !important; margin-top: 1.6rem !important; }
+:where(main, article, .prose) h3{ font-size: 1.15rem !important; margin-top: 1.2rem !important; }
+:where(main, article, .prose) h4{ font-size: 1.05rem !important; margin-top: 1rem !important; }
+:where(main, article, .prose) :where(h5,h6){ font-size: 1rem !important; margin-top: 0.9rem !important; }
+
+/* Red underline bar under every heading */
+:where(main, article, .prose) :where(h1,h2,h3,h4,h5,h6)::after{
   content: "";
   position: absolute;
   left: 0;
+  right: 0;
   bottom: -2px;
-  width: 100%;
   height: 2px;
-  background: linear-gradient(to right, var(--red-line), rgba(193,67,67,0.12));
+  background: linear-gradient(to right, var(--fs-underline), transparent);
+  opacity: 1;
 }
 
-/* H3 */
-:where(main, article, .prose) h3{
-  color: var(--orange) !important;
-  font-family: var(--display-2) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.01em;
-  margin-top: 1.15rem !important;
-  margin-bottom: 0.45rem !important;
-  position: relative;
-  padding-bottom: 0.15rem !important;
-}
-:where(main, article, .prose) h3::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 60%;
-  height: 2px;
-  background: linear-gradient(to right, var(--orange-line), transparent);
-}
-
-/* H4+ muted */
-:where(main, article, .prose) :where(h4,h5,h6){
-  color: color-mix(in oklab, var(--text) 80%, var(--muted)) !important;
-  font-family: var(--font) !important;
-  font-weight: 700;
-}
-
-/* Italics in headings */
-:where(main, article, .prose) :where(h1,h2,h3,h4) em{
-  color: var(--orange) !important;
+/* Italics inside headings (keep gold) */
+:where(main, article, .prose) :where(h1,h2,h3,h4,h5,h6) em{
+  color: var(--fs-heading) !important;
   font-style: italic;
-  font-weight: 600;
-}
-
-/* HR */
-.prose hr{
-  border: none;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--red-line), transparent);
-  margin: 1.8rem 0;
-}
-
-/* Lists: markers */
-.prose ul > li::marker,
-.prose ol > li::marker{
-  color: color-mix(in oklab, var(--muted) 80%, var(--red));
+  font-weight: 650;
 }
 
 /* Code */
 .prose :not(pre) > code{
-  font-family: var(--mono);
+  font-family: var(--fs-mono);
   background: color-mix(in oklab, #232831 70%, transparent);
-  border: 1px solid color-mix(in oklab, var(--rule) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--fs-rule) 70%, transparent);
   border-radius: 8px;
   padding: 0.12em 0.35em;
 }
 .prose pre{
   background: #232831 !important;
-  border: 1px solid color-mix(in oklab, var(--rule) 75%, transparent);
+  border: 1px solid color-mix(in oklab, var(--fs-rule) 75%, transparent);
   border-radius: 12px;
 }
 
 /* Blockquotes */
 .prose blockquote{
-  background: var(--panel);
-  border-left: 4px solid var(--red-line);
+  background: var(--fs-panel);
+  border-left: 4px solid var(--fs-underline);
   border-radius: 10px;
   padding: 0.85rem 1rem;
 }
 
-/* Scrollbar */
-*::-webkit-scrollbar{ width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,0.14);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: content-box;
-}
-*::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.22); }
+/* Images */
+.prose img{ border-radius: 12px; }
 
 /* Mobile */
 @media (max-width: 640px){
