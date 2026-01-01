@@ -5,4 +5,5 @@ aliases:
   - druid's
   - Warden
   - warden
+  - druids
 ---
