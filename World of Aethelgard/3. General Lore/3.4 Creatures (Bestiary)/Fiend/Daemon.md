@@ -1,0 +1,18 @@
+---
+aliases:
+  - Daemons
+  - Daemon's
+  - daemon
+  - daemons
+  - daemon's
+  - Yugoloth
+  - Yugoloths
+  - Yugoloth's
+  - yugoloth
+  - yugoloths
+  - yugoloth's
+  - Yugoloths (Daemons)
+  - Yugoloth (Daemon)
+  - yugoloths (daemons)
+  - yugoloth (daemon)
+---
