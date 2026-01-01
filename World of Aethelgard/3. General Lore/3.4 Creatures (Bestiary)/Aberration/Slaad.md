@@ -1,0 +1,14 @@
+---
+aliases:
+  - Slaadis, Slaadi's
+  - slaadi
+  - slaadis
+  - slaadi's
+  - Slaadi
+  - Slaads
+  - slaad
+  - Slaad's
+  - slaads
+  - slaad's
+---
+---
