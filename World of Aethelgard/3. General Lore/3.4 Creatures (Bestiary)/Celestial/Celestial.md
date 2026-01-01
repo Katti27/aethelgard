@@ -1,0 +1,17 @@
+---
+aliases:
+  - celestial
+  - Celestials
+  - celestials
+  - Celestial's
+  - celestial's
+  - Archon
+  - Archons
+  - archon
+  - archons
+  - Archon's
+  - archon's
+  - Einheriar
+  - Einheriar's
+  - Einheriars
+---
