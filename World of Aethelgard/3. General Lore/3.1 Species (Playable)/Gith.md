@@ -1,0 +1,15 @@
+---
+aliases:
+  - gith
+  - gith's
+  - Githyanki
+  - githyanki
+  - Githyanki's
+  - githyanki's
+  - Gith's
+  - Githzerai
+  - githzerai
+  - Githzerai's
+  - githzerai's
+---
+---
