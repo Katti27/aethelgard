@@ -1,0 +1,26 @@
+---
+aliases:
+  - Fiends
+  - Fiend's
+  - fiend
+  - fiends
+  - fiend's
+  - demodands
+  - Demodands
+  - demodand
+  - Demodand
+  - demodand's
+  - Demodand's
+  - gehreleths
+  - Gehreleths
+  - gehreleth
+  - Gehreleth
+  - gehreleth's
+  - Gehreleth's
+  - Leths
+  - leths
+  - Leth
+  - leth
+  - Leth's
+  - leth's
+---
