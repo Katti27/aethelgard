@@ -6,4 +6,5 @@ aliases:
   - Warden
   - warden
   - druids
+  - wardens
 ---
