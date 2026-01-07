@@ -1,5 +1,0 @@
----
-aliases:
-  - Corellon
-  - Corellon's
----
