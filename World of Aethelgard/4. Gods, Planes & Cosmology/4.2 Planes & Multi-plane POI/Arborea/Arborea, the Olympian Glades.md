@@ -35,7 +35,7 @@ Visitors often find the eladrin warm and exuberant—but quick to fury if wronge
 
 **Petitioners and Spirits** — Souls arriving in Arborea take forms reflecting their passions in life. Many join eternal hunts, feasts, revels, or artistic endeavors. Their afterlives are vibrant, expressive, and deeply communal.
 
-Arborea hosts several of the most influential deities of [[World of Aethelgard|Aethelgard]]:
+Arborea hosts several of the most influential deities of [[2.0 World of Aethelgard Geography|Aethelgard]]:
 
 - **[[Corellon, the Creator of the Elves|Corellon]]**, in Arvandor—god of artistry, beauty, magic, and elvenkind
  
