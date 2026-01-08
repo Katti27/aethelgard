@@ -80,7 +80,7 @@ Travelers come seeking:
 
 * Lessons in balance, instinct, and survival
 
-In [[World of Aethelgard|Aethelgard]]’s cosmology, **Stronmaus** is the greatest divine presence here, ruling Stormhold amid endless stormcloud hunts. Other nature powers sometimes walk the plane, though few claim dominion—its freedom resists being ruled.
+In [[2.0 World of Aethelgard Geography|Aethelgard]]’s cosmology, **Stronmaus** is the greatest divine presence here, ruling Stormhold amid endless stormcloud hunts. Other nature powers sometimes walk the plane, though few claim dominion—its freedom resists being ruled.
 
 Mortals dream of the Beastlands as:
 
