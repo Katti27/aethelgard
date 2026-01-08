@@ -88,4 +88,4 @@ Mortals who dream of Ysgard often see:
 
 - A hammer blow shaping a world from fire and frost
 
-To the people of [[World of Aethelgard|Aethelgard]], Ysgard represents the ideal of brave living — a grand, wild glory untouched by tyranny or despair. It is a place of triumph, celebration, and the joy of testing oneself against the cosmos.
+To the people of [[2.0 World of Aethelgard Geography|Aethelgard]], Ysgard represents the ideal of brave living — a grand, wild glory untouched by tyranny or despair. It is a place of triumph, celebration, and the joy of testing oneself against the cosmos.

@@ -60,7 +60,7 @@ Society in Baator is a rigid caste system defined entirely by power and obedienc
 
 Across its nine layers, Baator hosts countless damned souls: oathbreakers, tyrants, betrayers, and mortals tricked by infernal bargains. These souls gradually erode into lesser devils, feeding the hierarchy.
 
-Several of the most influential deities of [[World of Aethelgard|Aethelgard]]:
+Several of the most influential deities of [[2.0 World of Aethelgard Geography|Aethelgard]]:
 
 - **[[Asmodeus, the Lord of the Ninth|Asmodeus]]** rules from **Malsheem** in **Nessus**, the seat of infernal authority and ruler of the Nine Hells. 
 

@@ -12,27 +12,19 @@ A complete chronological framework from **Before Time** through **Greengrass 119
 
 ---
 
-### **Aethelgard Geography & Civilizations**
+### **[[2.0 Aethelgard Geography, Civilizations, Culture & Factions]]**
 
 The world as it exists geographically and politically, with its nations, peoples, borders, and cultural structures.
 
-- **Geography**
-    
-- **Civilizations**
-    
-- **Points of Interest**
-    
-- **NPCs**
-    
 ---
 
-### **General Lore**
+### **[[3.0 General Lore]]**
 
 Setting-wide reference pages that define the everyday truths of Aethelgard: species, backgrounds, classes and monster reference.
 
 ---
 
-### **Gods, Planes and Cosmology**
+### **[[4.0 Gods, Planes & Cosmology]]**
 
 The divine and planar architecture of the setting: deities, domains, agents of the gods and planar points of interest.
 
