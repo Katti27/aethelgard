@@ -72,7 +72,7 @@ Acheron enforces a very specific kind of metaphysical order:
 
 ### Role in the Multiverse
 
-In the wider cosmology, Acheron is the **armory and drill ground of tyranny** — a crucible for armies that serve lawful evil masters or causes. [[Devil]] legions may pass through on their way to other fronts; orcish warbands train for invasions that reach into worlds like [[World of Aethelgard|Aethelgard]]; mercenary companies bargain here for infernal contracts or divine sponsorship.
+In the wider cosmology, Acheron is the **armory and drill ground of tyranny** — a crucible for armies that serve lawful evil masters or causes. [[Devil]] legions may pass through on their way to other fronts; orcish warbands train for invasions that reach into worlds like [[2.0 World of Aethelgard Geography|Aethelgard]]; mercenary companies bargain here for infernal contracts or divine sponsorship.
 
 For Aethelgard specifically, Acheron looms as:
 
