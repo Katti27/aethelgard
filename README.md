@@ -6,7 +6,7 @@ Welcome to the **World of Aethelgard** — a living setting of ancient empires, 
 
 ## **Start Here**
 
-### **[[Era Outline for the Concordance of Ages]]**
+### **[[1.0 Era Outline for the Concordance of Ages]]**
 
 A complete chronological framework from **Before Time** through **Greengrass 1191 AC**.
 
