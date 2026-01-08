@@ -78,7 +78,7 @@ Its influence leaks into other worlds through:
  
 - Plagues crafted by the Oinoloth to destabilize mortal nations  
 
-In [[World of Aethelgard|Aethelgard]], fiends of Gehenna whisper into the ears of smugglers, warlords, and corrupt nobles — offering power to those willing to pay the cost.
+In [[2.0 World of Aethelgard Geography|Aethelgard]], fiends of Gehenna whisper into the ears of smugglers, warlords, and corrupt nobles — offering power to those willing to pay the cost.
 
 The Fourfold Furnaces stand as a warning:
 
